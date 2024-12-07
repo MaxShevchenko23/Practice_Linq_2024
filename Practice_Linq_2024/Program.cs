@@ -73,11 +73,9 @@ namespace Practice_Linq_2024
             //Query 2: Вивести Friendly матчі збірної Італії, які вона провела з 2020 року.  
 
             var selectedGames = games
-                            .Where(e => (e.Away_team == "Italy"
-                            || e.Home_team == "Italy")
-                            && e.Neutral
-                            && e.Date.Year >= 2020); // Корегуємо запит !!!
-
+                .Where(e => (e.Home_team == "Italy" || e.Away_team == "Italy")
+                            && e.Tournament == "Friendly"
+                            && e.Date.Year >= 2020);
 
             // Перевірка
             Console.WriteLine("\n======================== QUERY 2 ========================");
@@ -203,7 +201,7 @@ namespace Practice_Linq_2024
 
             foreach (var game in selectedGames)
             {
-                Console.WriteLine($"MatchYear: {game.MatchYear}, Team1: {game.Team1}, Team2: {game.Team2}, Goals: {game.Goals}");
+                Console.WriteLine($"{game.MatchYear} {game.Team1} - {game.Team2}, Goals: {game.Goals}");
             }
         }
 
@@ -219,7 +217,7 @@ namespace Practice_Linq_2024
                 .Select(e => new
                 {
                     MatchYear = e.Date.Year,
-                    Game = $"{e.Home_team} - {e.Away_team}",
+                    Game = $"{e.Home_team}-{e.Away_team}",
                     Result = e.Home_score > e.Away_score ? "Win" : e.Home_score < e.Away_score ? "Loss" : "Draw"
                 });
 
@@ -228,7 +226,7 @@ namespace Practice_Linq_2024
 
             foreach (var game in selectedGames)
             {
-                Console.WriteLine($"MatchYear: {game.MatchYear}, Game: {game.Game}, Result: {game.Result}");
+                Console.WriteLine($"{game.MatchYear} {game.Game}, Result for team1: {game.Result}");
             }
         }
 
