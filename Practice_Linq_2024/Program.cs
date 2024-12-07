@@ -40,7 +40,7 @@ namespace Practice_Linq_2024
 
         }
 
-        void PrintCollection(List<FootballGame> games)
+        static void PrintCollection(IEnumerable<FootballGame> games)
         {
             foreach (var game in games)
             {
@@ -54,7 +54,9 @@ namespace Practice_Linq_2024
         {
             //Query 1: Вивести всі матчі, які відбулися в Україні у 2012 році.
 
-            var selectedGames = games; // Корегуємо запит !!!
+            var selectedGames = games
+                .Where(e => e.Date.Year == 2012
+                            && e.Country == "Ukraine"); // Корегуємо запит !!!
 
 
             // Перевірка
@@ -62,7 +64,7 @@ namespace Practice_Linq_2024
 
             // див. приклад як має бути виведено:
 
-
+            PrintCollection(selectedGames);
         }
 
         // Запит 2
