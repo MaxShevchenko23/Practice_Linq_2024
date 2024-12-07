@@ -40,6 +40,14 @@ namespace Practice_Linq_2024
 
         }
 
+        void PrintCollection(List<FootballGame> games)
+        {
+            foreach (var game in games)
+            {
+                Console.WriteLine($"{game.Date:dd.MM.yyyy} {game.Home_team} - {game.Away_team}, Score: {game.Home_score} - {game.Away_score}, Country: {game.Country}");
+            }
+        }
+
 
         // Запит 1
         static void Query1(List<FootballGame> games)
