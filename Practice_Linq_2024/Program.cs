@@ -102,6 +102,7 @@ namespace Practice_Linq_2024
 
             // див. приклад як має бути виведено:
 
+
             PrintCollection(selectedGames);
 
 
