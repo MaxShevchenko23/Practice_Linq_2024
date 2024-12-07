@@ -72,14 +72,18 @@ namespace Practice_Linq_2024
         {
             //Query 2: Вивести Friendly матчі збірної Італії, які вона провела з 2020 року.  
 
-            var selectedGames = games; // Корегуємо запит !!!
+            var selectedGames = games
+                            .Where(e => (e.Away_team == "Italy"
+                            || e.Home_team == "Italy")
+                            && e.Neutral
+                            && e.Date.Year >= 2020); // Корегуємо запит !!!
 
 
             // Перевірка
             Console.WriteLine("\n======================== QUERY 2 ========================");
 
             // див. приклад як має бути виведено:
-
+            PrintCollection(selectedGames);
 
         }
 
@@ -88,12 +92,17 @@ namespace Practice_Linq_2024
         {
             //Query 3: Вивести всі домашні матчі збірної Франції за 2021 рік, де вона зіграла у нічию.
 
-            var selectedGames = games;   // Корегуємо запит !!!
+            var selectedGames = games.Where(e => e.Home_team == "France"
+                                                 && e.Date.Year == 2021
+                                                 && e.Country == "France"
+                                                 && (e.Home_score == e.Away_score));   // Корегуємо запит !!!
 
             // Перевірка
             Console.WriteLine("\n======================== QUERY 3 ========================");
 
             // див. приклад як має бути виведено:
+
+            PrintCollection(selectedGames);
 
 
         }
